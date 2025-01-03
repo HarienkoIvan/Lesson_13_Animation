@@ -1,0 +1,289 @@
+
+/* Обнуление стилей */
+*,
+*::before *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+ 
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+img {
+    vertical-align: top;
+}
+
+html,body {
+    height: 100%;
+}
+
+/* По умолчанию 16 рх */
+html {
+    font-size: 16px; 
+}
+
+body {
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+ 
+
+} 
+ 
+.wrapper {
+    min-height: 100%;  
+    overflow: hidden;
+    padding: 50px;
+}
+
+/* .........lesson12 ......... */
+
+
+
+.link {
+    color: yellow; 
+text-decoration: none;
+font-size: 14px;
+
+ 
+/* transition-duration Определяет промежуток времени, в течении которого должен осуществляться переход.
+Собственно тут мы указываем время за котороее одно значение( свойство) переходит вв другое.
+Свойство не наследуется.
+*/
+/* 0.2-0.3s Оптимальные значения перехода. */
+transition-duration: 0.3s, 1s;
+
+/* transition-property.
+Содержит название CSS-свойств, к которым будет применен эффект перехода. 
+Значение свойста может содержать как одно свойство, так и список через запятую.
+Свойства не наследуется.
+Обозначаются те свойства которые будут анимироваться.
+*/
+/* значение по умолчанию: all */
+transition-property: color, font-size;
+
+/* transition-delay.
+Задержка выполнения перехода. Позволяет сделать так, чтобы изменения свойства
+происходили не моментально, а с некторой задержкой.
+ */
+transition-delay: 1s, 0,5s;
+
+/* transition-timing-function.
+Задает стиль перехода, то есть некий сценарий, по которому будет осуществляться анимация.
+По умолчанию - ease
+Переход начинается медленно, разгоняется быстро и замедляется в конце.
+*/
+transition-timing-function: ease;
+
+transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+ 
+/* 
+ Универсальное свойство
+transition: font-size 1s ease 0.5s color 5s ease-out 0s; */
+
+
+/* Порядок значений 
+property  duration  timing-function delay
+ */
+
+.link:hover {
+    color: red ;
+    font-size: 20px;
+}
+
+
+/*
+CSS - переходы либо CSS - transition могут применяться ко всем элемментам и даже 
+к псеводэлементам. Что в свою очередь приводит к улучшению взаимодействия с пользователем, 
+как правило путем приятной анимированной реакции на его действия. Например -  наведение 
+ и нажатия на кнопку. Также свойства transition можно использовать для построения 
+ несложных сценариев анимации. 
+ Фактически, CSS - переходы обеспечивают смену значений других свойств с определенной анимацией и сценарием.
+ Все эту магию можно написать универсальным CSS свойством transition, либо рядом 
+ следующих отдельных свойств.
+*/
+
+
+
+.button {
+    display: inline-block;
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+     transition: 0.3s;
+}
+
+ .button:hover {
+    transform: translate(0px, 3px);
+box-shadow: 0 2px 0px rgba(0, 0, 0, 0.3);
+ }
+ 
+/* ............ */
+
+ .menu {
+    overflow: hidden;
+    background-color: ghostwhite;
+}
+
+.menu:hover .menu__list {
+transform: translateX(0);
+transition-delay: 0s;
+}
+
+.menu:hover .menu__item {
+    transform: translate(0);
+}
+
+
+.menu__list {
+background-color: green;
+padding: 15px;
+transform: translate(-100%);
+transition: 0.3s;
+transition-delay: 0.8s;
+}
+
+.menu__item {
+    transform: translateX(-100%);
+    transition-duration: 0.3s;
+}
+
+ 
+.menu__item:nth-child(1){
+    transition-delay: 0.1s;
+}
+
+.menu__item:nth-child(2){
+    transition-delay: 0.3s;
+}
+
+.menu__item:nth-child(3){
+    transition-delay: 0.5s;
+}
+
+.menu__item:nth-child(4){
+    transition-delay: 0.7s;
+}
+
+
+.menu__item:not(:last-child) {
+ margin: 0px 0px 10px 0px ;  
+}
+ 
+
+.menu__link {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+/* ----Animation------ */
+
+
+/* Как и CSS свойство плавных переходов transition, о котором мы говорили в предыдущем
+урок, свойство animation призвано сделать нашу верстку более динамичной, оживить 
+её для лучшего взаимодействия с пользователем и создания WOW эффекта.
+
+Но в отличии от CSS переходов, создание анимации базируется на ключевых кадрах @keyframes
+ которое позволяет автоматически воспроизводить и повторять эффекты на протяжении 
+ заданного времени, а также приостанавливать анимацию по определенному событию.
+
+ Другими словами, использование конструкции animation и @keyframes позволяет нам 
+ создавать более сложные сценарии анимации.
+ */
+
+
+
+.block {
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: darkolivegreen;
+
+
+/*animation-name
+ Определяет список применяемых к элементу анимаций (ключевых кадров).
+Можно указать через запятую. Причем приоритет у последней записи.
+*/
+
+animation-name: some-name;
+/* animation-duration Отвечает за продолжительность анимации */
+animation-duration: 5s;
+
+/* Задает сценарий развития анимации между ключевыми кадрами. */
+ animation-timing-function: linear;
+
+ /* Отвечает за задержку перед проигрыванием. */
+animation-delay: 0s;
+
+
+/* Отвечает за количество повторов проигрывания ключевых кадров. 
+infinite - бесконечность.
+*/
+animation-iteration-count: infinite;
+
+
+/* Определяет направление и тип проигрывания ключевых кадров */
+animation-direction: alternate;
+
+/* Определяет какие значения анимируемых css свойств применяться к обьекту 
+после завершения анимации.
+*/
+animation-fill-mode: none;
+}
+
+
+.block:hover {
+    /* При наведении курсором элемент перестает анимироваться. 
+    animation-name: none; */
+
+
+    /* При наведении курсором элемент останавливается, становится на паузу */
+    animation-play-state: paused;
+}
+
+
+@keyframes some-name {
+0% {
+    /* css - свойство */
+    transform: rotate(0deg);
+}
+50% {
+    background-color: blueviolet;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+100% {
+        /* css - свойство */
+    transform: rotate(360deg);
+}
+   
+}
